@@ -1,0 +1,18 @@
+language: cpp
+
+branches:
+    only:
+        - master
+
+sudo: required
+
+dist: trusty
+
+compiler:
+    - clang
+
+os:
+    - linux
+
+script: ./run_test.sh
+
