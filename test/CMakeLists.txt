@@ -29,7 +29,8 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
                  ${CMAKE_BINARY_DIR}/googletest-build)
 
-include_directories("${gtest_SOURCE_DIR}/include")
+include_directories("${gtest_SOURCE_DIR}/include"
+                    "${CMAKE_SOURCE_DIR}/src")
 
 # Test sources
 set(test_sources
@@ -38,5 +39,5 @@ set(test_sources
 
 # Now simply link against gtest or gtest_main as needed. Eg
 add_executable(example ${test_sources})
-target_link_libraries(example gtest pthread)
+target_link_libraries(example mainlib gtest pthread)
 add_test(NAME example_test COMMAND example)
