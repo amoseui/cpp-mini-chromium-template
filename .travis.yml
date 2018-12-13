@@ -4,14 +4,6 @@ branches:
   only:
     - master
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - gcc-4.9
-      - g++-4.9
-
 before_install:
   - git submodule update --init --recursive
   - git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
@@ -23,14 +15,22 @@ matrix:
     - compiler: gcc
       os: linux
       env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false'
+      addons: &gcc_addons
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-4.9
 
     - compiler: gcc
       os: linux
       env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false is_debug=false'
+      addons: *gcc_addons
 
     - compiler: gcc
       os: linux
       env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false is_official_build=true'
+      addons: *gcc_addons
 
     - compiler: clang
       os: linux
