@@ -28,5 +28,11 @@
 *.out
 *.app
 
-# build output directory
-build/
+# gclient
+.gclient_entries
+
+# Output directories
+/out/
+
+# third_party
+third_party/

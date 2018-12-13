@@ -1,18 +1,65 @@
 language: cpp
 
 branches:
-    only:
-        - master
+  only:
+    - master
 
-sudo: required
+before_install:
+  - git submodule update --init --recursive
+  - https://chromium.googlesource.com/chromium/tools/depot_tools.git
+  - export PATH=$PATH:`pwd`/depot_tools
+  - gclient sync
 
-dist: trusty
+matrix:
+  include:
+    - compiler: gcc
+      os: linux
+      env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false'
+      addons: &gcc_addons
+        apt:
+          sources:
+            - *sources
+          packages:
+            - g++-4.9
+            - *packages
 
-compiler:
-    - clang
+    - compiler: gcc
+      os: linux
+      env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false is_debug=false'
+      addons: *gcc_addons
 
-os:
-    - linux
+    - compiler: gcc
+      os: linux
+      env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false is_official_build=true'
+      addons: *gcc_addons
 
-script: ./run_test.sh
+    - compiler: clang
+      os: linux
+      env: GN_ARGS='clang_cc="clang-3.8" clang_cxx="clang++-3.8" is_clang=true'
+      addons: &clang_addons
+        apt:
+          sources:
+            - llvm-toolchain-precise-3.8
+            - *sources
+          packages:
+            - clang-3.8
+            - *packages
 
+    - compiler: clang
+      os: linux
+      env: GN_ARGS='clang_cc="clang-3.8" clang_cxx="clang++-3.8" is_clang=true is_debug=false'
+      addons: *clang_addons
+
+    - compiler: clang
+      os: linux
+      env: GN_ARGS='clang_cc="clang-3.8" clang_cxx="clang++-3.8" is_clang=true is_official_build=true'
+      addons: *clang_addons
+
+    - compiler: clang
+      os: osx
+      env: GN_ARGS='is_clang=true is_official_build=true'
+
+script:
+  - gn gen out --args="$GN_ARGS"
+  - ninja -C out
+  - cd out &&  ./hello

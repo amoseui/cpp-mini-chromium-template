@@ -1,0 +1,6 @@
+[submodule "build"]
+    path = build
+    url = git@github.com:timniederhausen/gn-build.git
+[submodule "buildtools"]
+    path = buildtools
+    url = https://chromium.googlesource.com/chromium/buildtools
