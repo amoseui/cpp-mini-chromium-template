@@ -4,14 +4,6 @@ branches:
   only:
     - master
 
-addons:
-  apt:
-    sources: &sources
-      # this is needed for gcc and clang
-      - ubuntu-toolchain-r-test
-    packages: &packages
-      - ninja-build
-
 before_install:
   - git submodule update --init --recursive
   - git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
@@ -22,46 +14,27 @@ matrix:
   include:
     - compiler: gcc
       os: linux
-      env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false'
-      addons: &gcc_addons
-        apt:
-          sources:
-            - *sources
-          packages:
-            - g++-4.9
-            - *packages
+      env: GN_ARGS='is_clang=false'
 
     - compiler: gcc
       os: linux
-      env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false is_debug=false'
-      addons: *gcc_addons
+      env: GN_ARGS='is_clang=false is_debug=false'
 
     - compiler: gcc
       os: linux
-      env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false is_official_build=true'
-      addons: *gcc_addons
+      env: GN_ARGS='is_clang=false is_official_build=true'
 
     - compiler: clang
       os: linux
-      env: GN_ARGS='clang_cc="clang-3.8" clang_cxx="clang++-3.8" is_clang=true'
-      addons: &clang_addons
-        apt:
-          sources:
-            - llvm-toolchain-precise-3.8
-            - *sources
-          packages:
-            - clang-3.8
-            - *packages
+      env: GN_ARGS='is_clang=true'
 
     - compiler: clang
       os: linux
-      env: GN_ARGS='clang_cc="clang-3.8" clang_cxx="clang++-3.8" is_clang=true is_debug=false'
-      addons: *clang_addons
+      env: GN_ARGS='is_clang=true is_debug=false'
 
     - compiler: clang
       os: linux
-      env: GN_ARGS='clang_cc="clang-3.8" clang_cxx="clang++-3.8" is_clang=true is_official_build=true'
-      addons: *clang_addons
+      env: GN_ARGS='is_clang=true is_official_build=true'
 
     - compiler: clang
       os: osx
@@ -70,4 +43,4 @@ matrix:
 script:
   - gn gen out --args="$GN_ARGS"
   - ninja -C out
-  - cd out &&  ./hello
+  - cd out && ./hello
