@@ -3,6 +3,9 @@
 # found in the LICENSE file.
 
 executable("hello") {
+  configs -= [ "//build/config:c++11" ]
+  configs += [ "//build/config:c++14" ]
+
   sources = [
     "hello.cc",
   ]
@@ -14,6 +17,9 @@ executable("hello") {
 }
 
 shared_library("hello_shared") {
+  configs -= [ "//build/config:c++11" ]
+  configs += [ "//build/config:c++14" ]
+
   sources = [
     "hello_shared.cc",
     "hello_shared.h",
@@ -23,6 +29,9 @@ shared_library("hello_shared") {
 }
 
 static_library("hello_static") {
+  configs -= [ "//build/config:c++11" ]
+  configs += [ "//build/config:c++14" ]
+
   sources = [
     "hello_static.cc",
     "hello_static.h",

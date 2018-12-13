@@ -14,15 +14,15 @@ matrix:
   include:
     - compiler: gcc
       os: linux
-      env: GN_ARGS='is_clang=false'
+      env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false'
 
     - compiler: gcc
       os: linux
-      env: GN_ARGS='is_clang=false is_debug=false'
+      env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false is_debug=false'
 
     - compiler: gcc
       os: linux
-      env: GN_ARGS='is_clang=false is_official_build=true'
+      env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false is_official_build=true'
 
     - compiler: clang
       os: linux
