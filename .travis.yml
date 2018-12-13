@@ -4,6 +4,14 @@ branches:
   only:
     - master
 
+addons:
+  apt:
+    sources: &sources
+      # this is needed for gcc and clang
+      - ubuntu-toolchain-r-test
+    packages: &packages
+      - ninja-build
+
 before_install:
   - git submodule update --init --recursive
   - https://chromium.googlesource.com/chromium/tools/depot_tools.git
