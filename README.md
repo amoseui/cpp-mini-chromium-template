@@ -1,3 +1,3 @@
-# ruff-cpp
+# ruffcpp
 
-[![Build Status](https://travis-ci.org/amoseui/ruff-cpp.svg?branch=master)](https://travis-ci.org/amoseui/ruff-cpp)
+[![Build Status](https://travis-ci.org/amoseui/ruffcpp.svg?branch=master)](https://travis-ci.org/amoseui/ruffcpp)
