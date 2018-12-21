@@ -35,4 +35,5 @@
 /out/
 
 # third_party
-third_party/
+third_party/depot_tools
+third_party/googletest/src

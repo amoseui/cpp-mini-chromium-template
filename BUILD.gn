@@ -48,7 +48,7 @@ executable("main") {
   ]
 }
 
-executable("main_unittest") {
+executable("hello_unittest") {
   testonly = true
   configs -= [ "//build/config:c++11" ]
   configs += [ "//build/config:c++14" ]
