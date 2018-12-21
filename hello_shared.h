@@ -5,6 +5,8 @@
 #ifndef TOOLS_GN_EXAMPLE_HELLO_SHARED_H_
 #define TOOLS_GN_EXAMPLE_HELLO_SHARED_H_
 
+#include <string>
+
 #if defined(WIN32)
 
 #if defined(HELLO_SHARED_IMPLEMENTATION)
@@ -27,6 +29,7 @@
 
 #endif
 
-HELLO_EXPORT const char* GetSharedText();
+HELLO_EXPORT const std::string GetSharedText();
+HELLO_EXPORT const int GetSharedNumber();
 
 #endif  // TOOLS_GN_EXAMPLE_HELLO_SHARED_H_

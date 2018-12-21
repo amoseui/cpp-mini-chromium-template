@@ -4,6 +4,10 @@
 
 #include "hello_shared.h"
 
-const char* GetSharedText() {
+const std::string GetSharedText() {
   return "world";
+}
+
+const int GetSharedNumber() {
+  return 1;
 }
