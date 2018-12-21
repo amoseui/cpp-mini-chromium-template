@@ -48,3 +48,18 @@ executable("main") {
   ]
 }
 
+executable("main_unittest") {
+  testonly = true
+  configs -= [ "//build/config:c++11" ]
+  configs += [ "//build/config:c++14" ]
+
+  sources = [
+    "test/main_test.cc",
+  ]
+
+  deps = [
+    ":hello_shared",
+    "//third_party/googletest:gtest",
+  ]
+}
+

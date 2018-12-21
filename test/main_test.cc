@@ -1,12 +1,12 @@
+#include "../hello_shared.h"
 #include "gtest/gtest.h"
-#include "main.h"
- 
-TEST(SampleTest, AssertionTrue) {
-  ASSERT_EQ(1, 1);
+
+TEST(SampleTest, TestGetSharedText) {
+  ASSERT_EQ("world", GetSharedText());
 }
 
-TEST(SampleTest, TestSampleMethod) {
-  ASSERT_EQ(1, test());
+TEST(SampleTest, TestGetSharedNumber) {
+  ASSERT_EQ(0, GetSharedNumber());
 }
 
 int main(int argc, char **argv) {
