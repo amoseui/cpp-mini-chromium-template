@@ -6,7 +6,7 @@ TEST(SampleTest, TestGetSharedText) {
 }
 
 TEST(SampleTest, TestGetSharedNumber) {
-  ASSERT_EQ(0, GetSharedNumber());
+  ASSERT_EQ(1, GetSharedNumber());
 }
 
 int main(int argc, char **argv) {
