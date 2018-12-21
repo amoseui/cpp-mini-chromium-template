@@ -51,4 +51,6 @@ matrix:
 script:
   - gn gen out --args="$GN_ARGS"
   - ninja -C out
-  - cd out && ./hello
+  - cd out
+  - ./hello
+  - ./main
