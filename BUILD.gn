@@ -37,3 +37,14 @@ static_library("hello_static") {
     "hello_static.h",
   ]
 }
+
+executable("main") {
+  configs -= [ "//build/config:c++11" ]
+  configs += [ "//build/config:c++14" ]
+
+  sources = [
+    "src/main.cc",
+    "src/main.h",
+  ]
+}
+
