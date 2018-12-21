@@ -54,7 +54,7 @@ executable("hello_unittest") {
   configs += [ "//build/config:c++14" ]
 
   sources = [
-    "test/main_test.cc",
+    "test/hello_test.cc",
   ]
 
   deps = [
