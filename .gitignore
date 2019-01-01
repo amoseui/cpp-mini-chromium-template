@@ -34,6 +34,7 @@
 # Output directories
 /out/
 
-# third_party
-third_party/depot_tools
+# DEPS
+buildtools/
 third_party/googletest/src
+third_party/mini_chromium/src

@@ -1,11 +1,6 @@
-# Copyright 2014 The Chromium Authors. All rights reserved.
-# Use of this source code is governed by a BSD-style license that can be
-# found in the LICENSE file.
+import("//build/test.gni")
 
 executable("hello") {
-  configs -= [ "//build/config:c++11" ]
-  configs += [ "//build/config:c++14" ]
-
   sources = [
     "hello.cc",
   ]
@@ -17,9 +12,6 @@ executable("hello") {
 }
 
 shared_library("hello_shared") {
-  configs -= [ "//build/config:c++11" ]
-  configs += [ "//build/config:c++14" ]
-
   sources = [
     "hello_shared.cc",
     "hello_shared.h",
@@ -29,9 +21,6 @@ shared_library("hello_shared") {
 }
 
 static_library("hello_static") {
-  configs -= [ "//build/config:c++11" ]
-  configs += [ "//build/config:c++14" ]
-
   sources = [
     "hello_static.cc",
     "hello_static.h",
@@ -39,20 +28,13 @@ static_library("hello_static") {
 }
 
 executable("main") {
-  configs -= [ "//build/config:c++11" ]
-  configs += [ "//build/config:c++14" ]
-
   sources = [
     "src/main.cc",
     "src/main.h",
   ]
 }
 
-executable("hello_unittest") {
-  testonly = true
-  configs -= [ "//build/config:c++11" ]
-  configs += [ "//build/config:c++14" ]
-
+test("hello_unittest") {
   sources = [
     "test/hello_test.cc",
   ]
@@ -62,4 +44,3 @@ executable("hello_unittest") {
     "//third_party/googletest:gtest",
   ]
 }
-

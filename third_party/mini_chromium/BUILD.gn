@@ -1,0 +1,5 @@
+group("base") {
+  public_deps = [
+    "src/base",
+  ]
+}

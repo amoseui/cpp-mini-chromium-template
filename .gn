@@ -1,2 +1,2 @@
 # The location of the build configuration file.
-buildconfig = "//build/config/BUILDCONFIG.gn"
+buildconfig = "//build/BUILDCONFIG.gn"
