@@ -1,65 +1,31 @@
-# Copyright 2014 The Chromium Authors. All rights reserved.
-# Use of this source code is governed by a BSD-style license that can be
-# found in the LICENSE file.
+import("//build/test.gni")
 
 executable("hello") {
-  configs -= [ "//build/config:c++11" ]
-  configs += [ "//build/config:c++14" ]
-
   sources = [
-    "hello.cc",
+    "src/hello.cc",
   ]
 
   deps = [
-    ":hello_shared",
     ":hello_static",
   ]
 }
 
-shared_library("hello_shared") {
-  configs -= [ "//build/config:c++11" ]
-  configs += [ "//build/config:c++14" ]
-
-  sources = [
-    "hello_shared.cc",
-    "hello_shared.h",
-  ]
-
-  defines = [ "HELLO_SHARED_IMPLEMENTATION" ]
-}
-
 static_library("hello_static") {
-  configs -= [ "//build/config:c++11" ]
-  configs += [ "//build/config:c++14" ]
-
   sources = [
-    "hello_static.cc",
-    "hello_static.h",
+    "src/hello_static.cc",
+    "src/hello_static.h",
   ]
 }
 
-executable("main") {
-  configs -= [ "//build/config:c++11" ]
-  configs += [ "//build/config:c++14" ]
-
-  sources = [
-    "src/main.cc",
-    "src/main.h",
-  ]
-}
-
-executable("hello_unittest") {
-  testonly = true
-  configs -= [ "//build/config:c++11" ]
-  configs += [ "//build/config:c++14" ]
-
+test("hello_unittest") {
   sources = [
     "test/hello_test.cc",
   ]
 
+  include_dirs = [ "src" ]
+
   deps = [
-    ":hello_shared",
+    ":hello_static",
     "//third_party/googletest:gtest",
   ]
 }
-

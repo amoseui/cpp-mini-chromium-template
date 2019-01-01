@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "hello_shared.h"
+#include "hello_static.h"
 
-const std::string GetSharedText() {
+std::string GetStaticText() {
   return "world";
 }
 
-const int GetSharedNumber() {
+int GetStaticNumber() {
   return 1;
 }

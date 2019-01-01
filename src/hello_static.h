@@ -2,8 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "hello_static.h"
+#ifndef HELLO_STATIC_H_
+#define HELLO_STATIC_H_
 
-const char* GetStaticText() {
-  return "Hello";
-}
+#include <string>
+
+std::string GetStaticText();
+int GetStaticNumber();
+
+#endif  // HELLO_STATIC_H_

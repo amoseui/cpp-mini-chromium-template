@@ -4,12 +4,11 @@
 
 #include <iostream>
 
-#include "hello_shared.h"
 #include "hello_static.h"
 
 using namespace std;
 
 int main(int argc, char* argv[]) {
-  cout <<  GetStaticText() << ", " << GetSharedText() << " " << GetSharedNumber() << endl;
+  cout << "Hello, " << GetStaticText() << " " << GetStaticNumber() << endl;
   return 0;
 }

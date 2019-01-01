@@ -1,12 +1,12 @@
-#include "../hello_shared.h"
 #include "gtest/gtest.h"
+#include "hello_static.h"
 
-TEST(SampleTest, TestGetSharedText) {
-  ASSERT_EQ("world", GetSharedText());
+TEST(SampleTest, TestGetStaticText) {
+  ASSERT_EQ("world", GetStaticText());
 }
 
-TEST(SampleTest, TestGetSharedNumber) {
-  ASSERT_EQ(1, GetSharedNumber());
+TEST(SampleTest, TestGetStaticNumber) {
+  ASSERT_EQ(1, GetStaticNumber());
 }
 
 int main(int argc, char **argv) {
