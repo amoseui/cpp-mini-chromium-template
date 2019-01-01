@@ -11,41 +11,21 @@ before_install:
 
 matrix:
   include:
-    - compiler: gcc
+    - compiler: clang
       os: linux
-      env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false'
-      addons: &gcc_addons
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-4.9
-
-    - compiler: gcc
-      os: linux
-      env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false is_debug=false'
-      addons: *gcc_addons
-
-    - compiler: gcc
-      os: linux
-      env: GN_ARGS='gcc_cc="gcc-4.9" gcc_cxx="g++-4.9" is_clang=false is_official_build=true'
-      addons: *gcc_addons
+      env: GN_ARGS='is_debug=false'
 
     - compiler: clang
       os: linux
-      env: GN_ARGS='is_clang=true'
-
-    - compiler: clang
-      os: linux
-      env: GN_ARGS='is_clang=true is_debug=false'
-
-    - compiler: clang
-      os: linux
-      env: GN_ARGS='is_clang=true is_official_build=true'
+      env: GN_ARGS='is_debug=true'
 
     - compiler: clang
       os: osx
-      env: GN_ARGS='is_clang=true is_official_build=true'
+      env: GN_ARGS='is_debug=false'
+
+    - compiler: clang
+      os: osx
+      env: GN_ARGS='is_debug=true'
 
 script:
   - gn gen out --args="$GN_ARGS"

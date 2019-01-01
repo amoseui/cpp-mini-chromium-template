@@ -6,18 +6,8 @@ executable("hello") {
   ]
 
   deps = [
-    ":hello_shared",
     ":hello_static",
   ]
-}
-
-shared_library("hello_shared") {
-  sources = [
-    "hello_shared.cc",
-    "hello_shared.h",
-  ]
-
-  defines = [ "HELLO_SHARED_IMPLEMENTATION" ]
 }
 
 static_library("hello_static") {
@@ -40,7 +30,7 @@ test("hello_unittest") {
   ]
 
   deps = [
-    ":hello_shared",
+    ":hello_static",
     "//third_party/googletest:gtest",
   ]
 }

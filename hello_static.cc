@@ -4,6 +4,10 @@
 
 #include "hello_static.h"
 
-const char* GetStaticText() {
-  return "Hello";
+std::string GetStaticText() {
+  return "world";
+}
+
+int GetStaticNumber() {
+  return 1;
 }
