@@ -11,22 +11,25 @@ before_install:
 
 matrix:
   include:
-    - os: linux
+    - compiler: clang
+      os: linux
       env: GN_ARGS='is_debug=false'
 
-    - os: linux
+    - compiler: clang
+      os: linux
       env: GN_ARGS='is_debug=true'
 
-    - os: osx
+    - compiler: clang
+      os: osx
       env: GN_ARGS='is_debug=false'
 
-    - os: osx
+    - compiler: clang
+      os: osx
       env: GN_ARGS='is_debug=true'
 
 script:
   - gn gen out --args="$GN_ARGS"
-  - ninja -C out
-  - cd out
-  - ./main
-  - ./hello
-  - ./hello_unittest
+  - ninja -C out hello
+  - ./out/hello
+  - ninja -C out hello_unittest
+  - ./out/hello_unittest

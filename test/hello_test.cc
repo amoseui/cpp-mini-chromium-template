@@ -1,5 +1,5 @@
-#include "../hello_static.h"
 #include "gtest/gtest.h"
+#include "hello_static.h"
 
 TEST(SampleTest, TestGetStaticText) {
   ASSERT_EQ("world", GetStaticText());

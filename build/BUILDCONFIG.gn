@@ -15,7 +15,7 @@ if (current_cpu == "") {
 }
 
 set_default_toolchain(
-     "//third_party/mini_chromium/src/build:gcc_like_toolchain")
+    "//third_party/mini_chromium/src/build:gcc_like_toolchain")
 
 declare_args() {
   is_debug = true
@@ -27,9 +27,7 @@ _default_configs = [
 ]
 
 _default_executable_configs =
-    _default_configs + [
-      "//third_party/mini_chromium/src/build:executable",
-    ]
+    _default_configs + [ "//third_party/mini_chromium/src/build:executable" ]
 
 set_defaults("source_set") {
   configs = _default_configs

@@ -9,6 +9,6 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-  cout <<  "Hello, " << GetStaticText() << " " << GetStaticNumber() << endl;
+  cout << "Hello, " << GetStaticText() << " " << GetStaticNumber() << endl;
   return 0;
 }

@@ -2,7 +2,7 @@ import("//build/test.gni")
 
 executable("hello") {
   sources = [
-    "hello.cc",
+    "src/hello.cc",
   ]
 
   deps = [
@@ -12,15 +12,8 @@ executable("hello") {
 
 static_library("hello_static") {
   sources = [
-    "hello_static.cc",
-    "hello_static.h",
-  ]
-}
-
-executable("main") {
-  sources = [
-    "src/main.cc",
-    "src/main.h",
+    "src/hello_static.cc",
+    "src/hello_static.h",
   ]
 }
 
@@ -28,6 +21,8 @@ test("hello_unittest") {
   sources = [
     "test/hello_test.cc",
   ]
+
+  include_dirs = [ "src" ]
 
   deps = [
     ":hello_static",
