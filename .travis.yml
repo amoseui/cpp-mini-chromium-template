@@ -11,20 +11,16 @@ before_install:
 
 matrix:
   include:
-    - compiler: clang
-      os: linux
+    - os: linux
       env: GN_ARGS='is_debug=false'
 
-    - compiler: clang
-      os: linux
+    - os: linux
       env: GN_ARGS='is_debug=true'
 
-    - compiler: clang
-      os: osx
+    - os: osx
       env: GN_ARGS='is_debug=false'
 
-    - compiler: clang
-      os: osx
+    - os: osx
       env: GN_ARGS='is_debug=true'
 
 script:
