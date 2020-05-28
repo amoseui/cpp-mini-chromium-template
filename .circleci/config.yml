@@ -36,5 +36,5 @@ workflows:
           matrix:
             parameters:
               os: [ linux, macos ]
-              debug: [ true, false ]
+              debug: [ "true", "false" ]
 
