@@ -3,7 +3,7 @@ version: 2.1
 executors:
   linux:
     docker:
-      - image: cimg/base:2020.01
+      - image: circleci/python:3.7.7
   macos:
     macos:
       xcode: 11.4
