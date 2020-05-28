@@ -1,0 +1,40 @@
+version: 2.1
+
+executors:
+  linux:
+    docker:
+      - image: cimg/base:2020.01
+  macos:
+    macos:
+      xcode: 11.4
+
+jobs:
+  build:
+    parameters:
+      os:
+        type: executor
+      debug:
+        type: string
+    executor: << parameters.os >>
+    steps:
+      - checkout
+      - run:
+          command: |
+            git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+            export PATH=$PATH:`pwd`/depot_tools
+            gclient sync
+            gn gen out --args="is_debug=<< parameters.debug >>"
+            ninja -C out hello
+            ./out/hello
+            ninja -C out hello_unittest
+            ./out/hello_unittest
+
+workflows:
+  all-tests:
+    jobs:
+      - build:
+          matrix:
+            parameters:
+              os: [ linux, macos ]
+              debug: [ true, false ]
+
