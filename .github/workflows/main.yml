@@ -1,0 +1,32 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    - name: build on matrix
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        debug: [ true, false ]
+        os: [ ubuntu-latest, macOS-latest ]
+
+    steps:
+    - name: depot tools
+      run: |
+        git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+        export PATH=$PATH:`pwd`/depot_tools
+        gclient sync
+    - uses: actions/checkout@v2
+    - name: build and test
+      run: |
+        gn gen out --args="is_debug=${{ matrix.debug }}"
+        ninja -C out hello
+        ./out/hello
+        ninja -C out hello_unittest
+        ./out/hello_unittest
+
