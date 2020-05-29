@@ -9,7 +9,7 @@ deps = {
 
   'third_party/googletest/src':
       Var('chromium_git') + '/external/github.com/google/googletest.git@' +
-          '011959aafddcd30611003de96cfd8d7a7685c700',
+          'e3ec975aed0505a6c9476acccedba0fcff0b9140',
 
   'third_party/mini_chromium/src':
       Var('chromium_git') + '/chromium/mini_chromium@' +
