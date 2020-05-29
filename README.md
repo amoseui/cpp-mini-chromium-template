@@ -1,6 +1,6 @@
 # ruffcpp
 
-[![Build Status](https://travis-ci.org/amoseui/ruffcpp.svg?branch=master)](https://travis-ci.org/amoseui/ruffcpp)
+[![CircleCI](https://circleci.com/gh/amoseui/ruffcpp/tree/master.svg?style=shield)](https://circleci.com/gh/amoseui/ruffcpp/tree/master)
 
 ### Prerequisites
 ```bash

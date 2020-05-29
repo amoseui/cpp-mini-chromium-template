@@ -1,0 +1,31 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7.7
+    parameters:
+      debug:
+        type: string
+    steps:
+      - checkout
+      - run:
+          command: |
+            sudo apt install clang -y
+            git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+            export PATH=$PATH:`pwd`/depot_tools
+            gclient sync
+            gn gen out --args="is_debug=<< parameters.debug >>"
+            ninja -C out hello
+            ./out/hello
+            ninja -C out hello_unittest
+            ./out/hello_unittest
+
+workflows:
+  all-tests:
+    jobs:
+      - build:
+          matrix:
+            parameters:
+              debug: [ "true", "false" ]
+
