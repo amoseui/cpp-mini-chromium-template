@@ -1,11 +1,36 @@
 vars = {
   'chromium_git': 'https://chromium.googlesource.com',
+
+  # GN CIPD package version.
+  'gn_version': 'git_revision:ae110f8b525009255ba1f9ae96982176d3bfad3d',
 }
 
 deps = {
   'buildtools':
       Var('chromium_git') + '/chromium/src/buildtools.git@' +
           'c2e4795660817c2776dbabd778b92ed58c074032',
+
+  'buildtools/mac': {
+    'packages': [
+      {
+        'package': 'gn/gn/mac-${{arch}}',
+        'version': Var('gn_version'),
+      }
+    ],
+    'dep_type': 'cipd',
+    'condition': 'host_os == "mac"',
+  },
+
+  'buildtools/linux64': {
+    'packages': [
+      {
+        'package': 'gn/gn/linux-amd64',
+        'version': Var('gn_version'),
+      }
+    ],
+    'dep_type': 'cipd',
+    'condition': 'host_os == "linux"',
+  },
 
   'third_party/googletest/src':
       Var('chromium_git') + '/external/github.com/google/googletest.git@' +

@@ -19,3 +19,8 @@ $ gclient sync
 $ gn gen out/Debug
 $ ninja -C out/Debug ${TARGET}
 ```
+
+### Run
+```bash
+$ ./out/Debug/${TARGET}
+```
