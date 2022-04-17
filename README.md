@@ -1,6 +1,5 @@
-# ruffcpp
+# cpp-mini-chromium-template
 
-[![CircleCI](https://circleci.com/gh/amoseui/ruffcpp/tree/master.svg?style=shield)](https://circleci.com/gh/amoseui/ruffcpp/tree/master)
 
 ### Prerequisites
 ```bash
@@ -10,8 +9,8 @@ $ export PATH=$DEPOT_TOOLS:$PATH
 
 ### Sync
 ```bash
-$ git clone git@github.com:amoseui/ruffcpp.git
-$ cd ruffcpp
+$ git clone git@github.com:amoseui/cpp-mini-chromium-template.git
+$ cd cpp-mini-chromium-template
 $ gclient sync
 ```
 
