@@ -1,5 +1,6 @@
 # cpp-mini-chromium-template
 
+[![actions](https://github.com/amoseui/cpp-mini-chromium-template/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/amoseui/cpp-mini-chromium-template/actions/workflows/main.yml)
 
 ### Prerequisites
 ```bash
