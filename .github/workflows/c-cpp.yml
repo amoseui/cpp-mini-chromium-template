@@ -1,0 +1,29 @@
+name: actions
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up build environment
+      run: |
+        git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+        export PATH=$PATH:`pwd`/depot_tools
+        gclient sync
+        gn gen out
+        ninja -C out hello
+        ./out/hello
+        ninja -C out hello_unittest
+        ./out/hello_unittest
+    
