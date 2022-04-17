@@ -1,6 +1,6 @@
-# ruffcpp
+# cpp-mini-chromium-template
 
-[![CircleCI](https://circleci.com/gh/amoseui/ruffcpp/tree/master.svg?style=shield)](https://circleci.com/gh/amoseui/ruffcpp/tree/master)
+[![actions](https://github.com/amoseui/cpp-mini-chromium-template/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/amoseui/cpp-mini-chromium-template/actions/workflows/main.yml)
 
 ### Prerequisites
 ```bash
@@ -10,8 +10,8 @@ $ export PATH=$DEPOT_TOOLS:$PATH
 
 ### Sync
 ```bash
-$ git clone git@github.com:amoseui/ruffcpp.git
-$ cd ruffcpp
+$ git clone git@github.com:amoseui/cpp-mini-chromium-template.git
+$ cd cpp-mini-chromium-template
 $ gclient sync
 ```
 
@@ -19,4 +19,9 @@ $ gclient sync
 ```bash
 $ gn gen out/Debug
 $ ninja -C out/Debug ${TARGET}
+```
+
+### Run
+```bash
+$ ./out/Debug/${TARGET}
 ```

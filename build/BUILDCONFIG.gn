@@ -15,19 +15,19 @@ if (current_cpu == "") {
 }
 
 set_default_toolchain(
-    "//third_party/mini_chromium/src/build:gcc_like_toolchain")
+    "//third_party/mini_chromium/src/build/config:gcc_like_toolchain")
 
 declare_args() {
   is_debug = true
 }
 
 _default_configs = [
-  "//third_party/mini_chromium/src/build:default",
-  "//third_party/mini_chromium/src/build:Wexit_time_destructors",
+  "//third_party/mini_chromium/src/build/config:default",
+  "//third_party/mini_chromium/src/build/config:Wexit_time_destructors",
 ]
 
 _default_executable_configs =
-    _default_configs + [ "//third_party/mini_chromium/src/build:executable" ]
+    _default_configs + [ "//third_party/mini_chromium/src/build/config:executable" ]
 
 set_defaults("source_set") {
   configs = _default_configs
