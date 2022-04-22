@@ -32,7 +32,7 @@ jobs:
     - name: Set up build environment
       run: |
         git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-        echo "PATH=$PATH:`pwd`/depot_tools" >> $GITHUB_PATH
+        echo "`pwd`/depot_tools" >> $GITHUB_PATH
         gclient sync
 
     - name: Build and run tests
