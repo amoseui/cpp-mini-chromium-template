@@ -17,13 +17,29 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - uses: actions/cache@v3
+      with:
+        path: |
+          .cipd/
+          buildtools/
+          third_party/googletest/src
+          third_party/mini_chromium/src
+        key: ${{ runner.os }}-DEPS-${{ hashFiles('DEPS') }}
+        restore-keys: |
+          ${{ runner.os }}-DEPS-
+
     - name: Set up build environment
       run: |
         git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
         export PATH=$PATH:`pwd`/depot_tools
         gclient sync
+
+    - name: Build and run tests
+      run: |
         gn gen out
         ninja -C out hello
         ./out/hello
         ninja -C out hello_unittest
         ./out/hello_unittest
+
