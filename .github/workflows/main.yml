@@ -33,7 +33,7 @@ jobs:
       run: |
         git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
         echo $PATH
-        echo "PATH=$PATH:`pwd`/depot_tools" >> $GITHUB_ENV
+        echo "`pwd`/depot_tools" >> $GITHUB_PATH
         echo $PATH
         gclient sync
 
