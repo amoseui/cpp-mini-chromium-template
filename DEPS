@@ -3,6 +3,11 @@ vars = {
 
   # GN CIPD package version.
   'gn_version': 'git_revision:ae110f8b525009255ba1f9ae96982176d3bfad3d',
+
+  # ninja CIPD package version.
+  # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
+  # This has to stay in sync with the version in src/third_party/ninja/README.chromium.
+  'ninja_version': 'version:2@1.11.1.chromium.6',
 }
 
 deps = {
@@ -39,6 +44,16 @@ deps = {
   'third_party/mini_chromium/src':
       Var('chromium_git') + '/chromium/mini_chromium@' +
           '5654edb4225bcad13901155c819febb5748e502b',
+
+  'third_party/ninja': {
+    'packages': [
+      {
+        'package': 'infra/3pp/tools/ninja/${{platform}}',
+        'version': Var('ninja_version'),
+      }
+    ],
+    'dep_type': 'cipd',
+  },
 }
 
 hooks = [
