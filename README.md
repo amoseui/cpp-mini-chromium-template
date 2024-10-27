@@ -5,7 +5,7 @@ cpp-mini-chromium-template is a C++ project template with mini_chromium.
 
 - [mini_chromium](https://chromium.googlesource.com/chromium/mini_chromium) is a small collection of useful low-level ([base](https://chromium.googlesource.com/chromium/src/base/)) routines from the [Chromium](https://www.chromium.org/Home/) open-source project.
 - [googletest](https://github.com/google/googletest)
-- [GN](https://gn.googlesource.com/gn/) and [Ninja](https://ninja-build.org) 
+- [GN](https://gn.googlesource.com/gn/) and [Ninja](https://ninja-build.org)
 - [GitHub Actions](https://github.com/features/actions)
 
 ### Prerequisites
@@ -24,7 +24,7 @@ $ gclient sync
 ### Build
 ```bash
 $ gn gen out/Debug
-$ ninja -C out/Debug hello
+$ autoninja -C out/Debug hello
 ```
 
 ### Run
@@ -35,6 +35,6 @@ $ ./out/Debug/hello
 ### Test
 ```bash
 $ gn gen out/Debug
-$ ninja -C out/Debug hello_unittest
+$ autoninja -C out/Debug hello_unittest
 $ ./out/Debug/hello_unittest
 ```

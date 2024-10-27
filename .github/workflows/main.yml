@@ -41,8 +41,8 @@ jobs:
     - name: Build and run tests
       run: |
         gn gen out
-        ninja -C out hello
+        autoninja -C out hello
         ./out/hello
-        ninja -C out hello_unittest
+        autoninja -C out hello_unittest
         ./out/hello_unittest
 
