@@ -2,9 +2,9 @@ name: actions
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -17,6 +17,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install Python setup tools
+      run: |
+        pip install setuptools
 
     - uses: actions/cache@v3
       with:
@@ -41,8 +49,8 @@ jobs:
     - name: Build and run tests
       run: |
         gn gen out
-        ninja -C out hello
+        autoninja -C out hello
         ./out/hello
-        ninja -C out hello_unittest
+        autoninja -C out hello_unittest
         ./out/hello_unittest
 
