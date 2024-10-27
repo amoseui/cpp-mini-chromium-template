@@ -8,8 +8,6 @@ vars = {
   # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
   # This has to stay in sync with the version in src/third_party/ninja/README.chromium.
   'ninja_version': 'version:3@1.12.1.chromium.4',
-
-  'non_git_source': 'True',
 }
 
 allowed_hosts = [
@@ -63,7 +61,7 @@ deps = {
 
   'buildtools/mac-format': {
     'bucket': 'chromium-clang-format',
-    'condition': 'host_os == "mac" and host_cpu == "x64" and non_git_source',
+    'condition': 'host_os == "mac" and host_cpu == "x64"',
     'dep_type': 'gcs',
     'objects': [
       {
@@ -78,7 +76,7 @@ deps = {
 
   'buildtools/mac_arm64-format': {
     'bucket': 'chromium-clang-format',
-    'condition': 'host_os == "mac" and host_cpu == "arm64" and non_git_source',
+    'condition': 'host_os == "mac" and host_cpu == "arm64"',
     'dep_type': 'gcs',
     'objects': [
       {
@@ -93,7 +91,7 @@ deps = {
 
   'buildtools/linux64-format': {
     'bucket': 'chromium-clang-format',
-    'condition': 'host_os == "linux" and non_git_source',
+    'condition': 'host_os == "linux"',
     'dep_type': 'gcs',
     'objects': [
       {
