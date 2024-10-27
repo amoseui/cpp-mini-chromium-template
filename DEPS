@@ -43,7 +43,7 @@ deps = {
 
   'third_party/googletest/src':
       Var('chromium_git') + '/external/github.com/google/googletest.git@' +
-          'df1544bcee0c7ce35cd5ea0b3eb8cc81855a4140',
+          '011959aafddcd30611003de96cfd8d7a7685c700',
 
   'third_party/mini_chromium/src':
       Var('chromium_git') + '/chromium/mini_chromium@' +
