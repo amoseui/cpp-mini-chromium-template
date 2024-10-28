@@ -1,5 +1,5 @@
 # cpp-mini-chromium-template
-[![build](https://github.com/amoseui/cpp-mini-chromium-template/workflows/actions/badge.svg?branch=master)](https://github.com/amoseui/cpp-mini-chromium-template/actions/workflows/main.yml)
+[![build](https://github.com/amoseui/cpp-mini-chromium-template/workflows/actions/badge.svg?branch=main)](https://github.com/amoseui/cpp-mini-chromium-template/actions/workflows/main.yml)
 
 cpp-mini-chromium-template is a C++ project template with mini_chromium.
 
