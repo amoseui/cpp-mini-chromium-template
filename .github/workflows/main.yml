@@ -55,10 +55,15 @@ jobs:
 
     - name: Build and run tests
       run: |
-        gn gen out
-        autoninja -C out hello
+        gnargs=""
         ext=""
-        [ "$RUNNER_OS" = "Windows" ] && ext=".exe"
+        if [ "$RUNNER_OS" = "Windows" ]; then
+          # Use the runner's MSVC (cl.exe) instead of fetching a clang package.
+          gnargs='--args=mini_chromium_is_clang=false'
+          ext=".exe"
+        fi
+        gn gen out $gnargs
+        autoninja -C out hello
         "./out/hello$ext"
         autoninja -C out hello_unittest
         "./out/hello_unittest$ext"
