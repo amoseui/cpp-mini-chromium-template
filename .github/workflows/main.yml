@@ -13,12 +13,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macOS-latest]
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+
+    defaults:
+      run:
+        shell: bash
+
+    env:
+      DEPOT_TOOLS_WIN_TOOLCHAIN: 0
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
-    - uses: actions/setup-python@v5
+    - uses: actions/setup-python@v6
       with:
         python-version: '3.10'
 
@@ -26,7 +33,7 @@ jobs:
       run: |
         pip install setuptools
 
-    - uses: actions/cache@v4
+    - uses: actions/cache@v5
       with:
         path: |
           .cipd/
@@ -39,7 +46,7 @@ jobs:
 
     - name: Set up PATH
       run: |
-        echo "`pwd`/depot_tools" >> $GITHUB_PATH
+        echo "${{ github.workspace }}/depot_tools" >> "$GITHUB_PATH"
 
     - name: Sync
       run: |
@@ -48,9 +55,15 @@ jobs:
 
     - name: Build and run tests
       run: |
-        gn gen out
+        gnargs=""
+        ext=""
+        if [ "$RUNNER_OS" = "Windows" ]; then
+          # Use the runner's MSVC (cl.exe) instead of fetching a clang package.
+          gnargs='--args=mini_chromium_is_clang=false'
+          ext=".exe"
+        fi
+        gn gen out $gnargs
         autoninja -C out hello
-        ./out/hello
+        "./out/hello$ext"
         autoninja -C out hello_unittest
-        ./out/hello_unittest
-
+        "./out/hello_unittest$ext"
