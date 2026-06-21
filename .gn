@@ -1,2 +1,6 @@
 # The location of the build configuration file.
 buildconfig = "//build/BUILDCONFIG.gn"
+
+# mini_chromium runs Python build scripts (e.g. find_mac_sdk.py) via
+# exec_script; macOS only ships python3, so point GN at it explicitly.
+script_executable = "python3"
